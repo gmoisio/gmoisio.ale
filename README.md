@@ -43,7 +43,7 @@ password: !vault |
           ....
 ~~~~
 
-To decrypt it at run time, here are two options:
+To decrypt it at run time, there are two options:
 - Use the `--ask-vault-pass` option on the command line.
 - Use a file with the vault decryption password and configure the `vault_password_file` in `ansible.cfg`.
 
@@ -62,6 +62,12 @@ With the config file `~/.ssh/config`
 Host xx.yy.zz.ww
     HostKeyAlgorithms +ssh-dss
 ~~~~
+
+Improved display
+----------------
+
+YAML format can improve playbooks display with `stdout_callback = yaml` in `ansible.cfg` file.
+It needs the `community.general` Ansible collection to work fine.
 
 License
 -------
