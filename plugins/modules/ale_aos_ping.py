@@ -27,7 +27,7 @@
 
 from netmiko.ssh_exception import *
 from netmiko import ConnectHandler
-from ansible.module_utils.basic import *
+from ansible.module_utils.basic import AnsibleModule
 ANSIBLE_METADATA = {'metadata_version': '1.2',
                     'supported_by': 'community',
                     'status': ['stableinterface']}
@@ -36,7 +36,7 @@ DOCUMENTATION = '''
 ---
 module: ale_aos_ping
 author: Gilbert MOISIO
-version_added: "1.2.0" # of ale_aos collection
+version_added: "1.2.0" # of ale collection
 short_description: Check SSH connectivity for an ALE OmniSwitch device.
 description:
     - Try to connect to an OmniSwitch device. The module check to see is the
@@ -46,7 +46,7 @@ requirements:
 options:
     host:
         description:
-            - Set to {{ inventory_hostname }}
+            - Set to {{ inventory_hostname }} or {{ ansible_host }}
         required: true
     port:
         description:
@@ -74,8 +74,8 @@ options:
 '''
 
 EXAMPLES = '''
-- ale_aos_ping: 
-    host: "{{ inventory_hostname }}"
+- gmoisio.ale.ale_aos_ping: 
+    host: "{{ ansible_host }}"
     username: admin
     password: switch
     sshconf: ~/.ssh/config
@@ -127,8 +127,14 @@ def main():
             module.fail_json(msg="Failed to detect '%s' in output" %
                              module.params['check_string'],
                              output=output)
-    except (NetMikoAuthenticationException, NetMikoTimeoutException):
-        module.fail_json(msg="Failed to connect to device (%s)" %
+    except (NetMikoAuthenticationException):
+        module.fail_json(msg="Failed to authenticate to device (%s)" %
+                             (module.params['host']))
+    except (NetMikoTimeoutException):
+        module.fail_json(msg="Timeout when trying to connect to device (%s)" %
+                             (module.params['host']))
+    except (ConfigInvalidException):
+        module.fail_json(msg="Invalid configuration for device (%s)" %
                              (module.params['host']))
 
 

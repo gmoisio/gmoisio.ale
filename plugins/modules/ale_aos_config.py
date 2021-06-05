@@ -30,7 +30,7 @@ from pathlib import Path
 from datetime import datetime
 from netmiko.ssh_exception import *
 from netmiko import ConnectHandler
-from ansible.module_utils.basic import *
+from ansible.module_utils.basic import AnsibleModule
 ANSIBLE_METADATA = {'metadata_version': '1.2',
                     'supported_by': 'community',
                     'status': ['stableinterface']}
@@ -39,7 +39,7 @@ DOCUMENTATION = '''
 ---
 module: ale_aos_config
 author: Gilbert MOISIO
-version_added: "1.2.0" # of ale_aos collection
+version_added: "1.2.0" # of ale collection
 short_description: Send config commands to an ALE OmniSwitch device.
 description:
     - Connect to an OmniSwitch device and send configurations commands.
@@ -49,7 +49,7 @@ requirements:
 options:
     host:
         description:
-            - Set to {{ inventory_hostname }}
+            - Set to {{ inventory_hostname }} or {{ ansible_host }}
         required: true
     port:
         description:
@@ -92,16 +92,16 @@ options:
 '''
 
 EXAMPLES = '''
-- ale_aos_config: 
-    host: "{{ inventory_hostname }}"
+- gmoisio.ale.ale_aos_config: 
+    host: "{{ ansible_host }}"
     username: admin
     password: switch
     sshconf: ~/.ssh/config
     commands:
       - vlan 100 enable name test1
       - vlan 200 enable name test2
-- ale_aos_config: 
-    host: "{{ inventory_hostname }}"
+- gmoisio.ale.ale_aos_config: 
+    host: "{{ ansible_host }}"
     username: admin
     password: switch
     file: commands.txt
@@ -198,8 +198,14 @@ def main():
             module.exit_json(changed=True, output=output['command'])
         else:
             module.exit_json(output=output['command'])
-    except (NetMikoAuthenticationException, NetMikoTimeoutException):
-        module.fail_json(msg="Failed to connect to device (%s)" %
+    except (NetMikoAuthenticationException):
+        module.fail_json(msg="Failed to authenticate to device (%s)" %
+                             (module.params['host']))
+    except (NetMikoTimeoutException):
+        module.fail_json(msg="Timeout when trying to connect to device (%s)" %
+                             (module.params['host']))
+    except (ConfigInvalidException):
+        module.fail_json(msg="Invalid configuration for device (%s)" %
                              (module.params['host']))
 
 

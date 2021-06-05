@@ -1,10 +1,10 @@
-# Ansible Collection - gmoisio.ale_aos
+# Ansible Collection - gmoisio.ale
 
-[![Build Status](https://travis-ci.org/gmoisio/ansible-aos-stdlib.svg?branch=master)](https://travis-ci.org/gmoisio/ansible-aos-stdlib)
-[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-ale_aos-blue.svg)](https://galaxy.ansible.com/gmoisio/ale_aos)
+[![Build Status](https://travis-ci.org/gmoisio/ansible-aos-stdlib.svg?branch=master)](https://travis-ci.org/gmoisio/gmoisio.ale)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-gmoisio.ale-blue.svg)](https://galaxy.ansible.com/gmoisio/gmoisio.ale)
 
-ALE_AOS
-=======
+ALE
+===
 
 An Ansible collection to access Alcatel-Lucent Enterprise OmniSwitch devices.
 
@@ -17,28 +17,50 @@ Example Playbook
 ----------------
 
 ~~~~
+---
 - name: This is a test for ale_aos_ping module
   hosts: ale
   connection: local
-  roles:
-    - gmoisio.ale_aos
-  vars:
-    ansible_python_interpreter: "python"
+  gather_facts: no
   tasks:
     - name: Test ale_aos_ping Python module
-      ale_aos_ping: 
-        host: "{{ inventory_hostname }}"
-        username: admin
-        password: switch
+      gmoisio.ale.ale_aos_ping: 
+        host: "{{ ansible_host }}"
+        username: "{{ login }}"
+        password: "{{ password }}"
       register: result
-    - debug: var=result 
+    - ansible.builtin.debug: var=result
 ~~~~
 
-Add below setting to your ansible.cfg and get a better display:
+Dealing with password
+---------------------
+
+Password can be defined as a single encrypted variable in a YAML file.
 
 ~~~~
-[defaults]
-stdout_callback = yaml
+password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          ....
+~~~~
+
+To decrypt it at run time, here are two options:
+- Use the `--ask-vault-pass` option on the command line.
+- Use a file with the vault decryption password and configure the `vault_password_file` in `ansible.cfg`.
+
+Dealing with old AOS6 release
+-----------------------------
+
+When there is an issue with SSH connection (SSH crypto algorithm issue), the workaround is to use the `sshconf` module option.
+
+~~~~
+sshconf: ~/.ssh/config
+~~~~
+
+With the config file `~/.ssh/config`
+
+~~~~
+Host xx.yy.zz.ww
+    HostKeyAlgorithms +ssh-dss
 ~~~~
 
 License

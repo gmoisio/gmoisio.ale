@@ -17,7 +17,7 @@ Parameters
 
     host:
         description:
-            - Set to {{ inventory_hostname }}
+            - Set to {{ inventory_hostname }} or {{ ansible_host }}
         required: true
     port:
         description:
@@ -43,8 +43,8 @@ Examples
 --------
 .. code-block:: yaml
 
-    - ale_aos_ping: 
-        host: "{{ inventory_hostname }}"
+    - gmoisio.ale.ale_aos_ping: 
+        host: "{{ ansible_host }}"
         username: admin
         password: switch
 

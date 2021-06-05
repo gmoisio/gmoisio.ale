@@ -17,7 +17,7 @@ Parameters
 
     host:
         description:
-            - Set to {{ inventory_hostname }}
+            - Set to {{ inventory_hostname }} or {{ ansible_host }}
         required: true
     port:
         description:
@@ -58,16 +58,16 @@ Examples
 --------
 .. code-block:: yaml
 
-    - ale_aos_config: 
-        host: "{{ inventory_hostname }}"
+    - gmoisio.ale.ale_aos_config: 
+        host: "{{ ansible_host }}"
         username: admin
         password: switch
         commands:
         - vlan 100 enable name test1
         - vlan 200 enable name test2
 
-    - ale_aos_config: 
-        host: "{{ inventory_hostname }}"
+    - gmoisio.ale.ale_aos_config: 
+        host: "{{ ansible_host }}"
         username: admin
         password: switch
         file: commands.txt
