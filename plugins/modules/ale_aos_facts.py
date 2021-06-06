@@ -28,7 +28,7 @@
 from netmiko.ssh_exception import *
 from netmiko import ConnectHandler
 from ansible.module_utils.basic import AnsibleModule
-import re
+from re import findall
 ANSIBLE_METADATA = {'metadata_version': '1.2',
                     'supported_by': 'community',
                     'status': ['stableinterface']}
@@ -141,7 +141,7 @@ def main():
             if getter in list(getters_list.keys()):
                 result = ssh_conn.send_command(
                     getters_list[getter][0])
-                output[getter] = re.findall(getters_list[getter][1], result)
+                output[getter] = findall(getters_list[getter][1], result)
             else:
                 bad_getters.append(getter)
         ssh_conn.disconnect()

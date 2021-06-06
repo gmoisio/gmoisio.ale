@@ -1,12 +1,21 @@
 # Ansible Collection - gmoisio.ale
 
-[![Build Status](https://travis-ci.org/gmoisio/ansible-aos-stdlib.svg?branch=master)](https://travis-ci.org/gmoisio/gmoisio.ale)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-gmoisio.ale-blue.svg)](https://galaxy.ansible.com/gmoisio/gmoisio.ale)
 
 ALE
 ===
 
 An Ansible collection to access Alcatel-Lucent Enterprise OmniSwitch devices.
+
+Modules
+-------
+
+| Name                                                                                                                     | Description                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| [gmoisio.ale.ale_aos_ping](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale_aos.ale_aos_ping.rst)       | Check SSH connectivity for an ALE OmniSwitch device                                    |
+| [gmoisio.ale.ale_aos_command](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale_aos.ale_aos_command.rst) | Send a command to an ALE OmniSwitch device                                             |
+| [gmoisio.ale.ale_aos_config](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale_aos.ale_aos_config.rst)   | Send config commands to an ALE OmniSwitch device                                       |
+| [gmoisio.ale.ale_aos_facts](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale_aos.ale_aos_facts.rst)     | Get ALE OmniSwitch device informations and return a dictionary of lists (experimental) |
 
 Requirements
 ------------
