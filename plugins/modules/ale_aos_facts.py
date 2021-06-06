@@ -80,6 +80,10 @@ EXAMPLES = '''
     username: admin
     password: switch
     sshconf: ~/.ssh/config
+    getters:
+        - vlans
+        - interfaces
+        - ntp
 '''
 
 RETURN = '''
