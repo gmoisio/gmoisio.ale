@@ -56,6 +56,8 @@ Examples
             - interfaces
             - ntp
 
+The module returns a dictionary of lists. It's an experimental module to loop on Python formated informations.
+
 Authors
 ~~~~~~~
 
