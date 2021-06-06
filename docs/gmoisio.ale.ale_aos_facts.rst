@@ -47,14 +47,14 @@ Examples
 --------
 .. code-block:: yaml
 
-- gmoisio.ale.ale_aos_facts: 
-    host: "{{ ansible_host }}"
-    username: admin
-    password: switch
-    getters:
-        - vlans
-        - interfaces
-        - ntp
+    - gmoisio.ale.ale_aos_facts: 
+        host: "{{ ansible_host }}"
+        username: admin
+        password: switch
+        getters:
+            - vlans
+            - interfaces
+            - ntp
 
 Authors
 ~~~~~~~
