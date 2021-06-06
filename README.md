@@ -16,7 +16,7 @@ Requires ansible-base >= 2.10.10 and netmiko >= 3.4.0
 Example Playbook
 ----------------
 
-~~~~
+~~~~yaml
 ---
 - name: This is a test for ale_aos_ping module
   hosts: ale
@@ -37,7 +37,7 @@ Dealing with password
 
 Password can be defined as a single encrypted variable in a YAML file.
 
-~~~~
+~~~~yaml
 password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           ....
