@@ -49,7 +49,7 @@ repository: https://github.com/gmoisio/gmoisio.ale
 documentation: https://github.com/gmoisio/gmoisio.ale/tree/main/docs
 
 # The URL to the homepage of the collection/project
-homepage: hhttps://github.com/gmoisio/gmoisio.ale
+homepage: https://github.com/gmoisio/gmoisio.ale
 
 # The URL to the collection issue tracker
 issues: https://github.com/gmoisio/gmoisio.ale/issues
