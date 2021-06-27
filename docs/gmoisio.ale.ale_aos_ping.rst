@@ -9,7 +9,7 @@ gmoisio.ale.ale_aos_ping
 
 Synopsis
 --------
-- This module check SSH connectivity for an ALE OmniSwitch device.
+- This module checks SSH connectivity for an ALE OmniSwitch device.
 
 Parameters
 ----------

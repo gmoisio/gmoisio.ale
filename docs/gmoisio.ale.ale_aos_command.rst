@@ -9,8 +9,7 @@ gmoisio.ale.ale_aos_command
 
 Synopsis
 --------
-- This module send a list of commands to an ALE OmniSwitch device. A search string can be specified 
-using a I(command) and I(search) dictionary. Program stops as soon as a search string is not found.
+- This module sends a list of commands to an ALE OmniSwitch device. A search string can be specified using a I(command) and I(search) dictionary. Program stops as soon as a search string is not found.
 
 Parameters
 ----------
@@ -62,23 +61,23 @@ Examples
 --------
 .. code-block:: yaml
 
-- gmoisio.ale.ale_aos_command: 
-    host: "{{ ansible_host }}"
-    username: admin
-    password: switch
-    sshconfig: ~/.ssh/config
-    commands:
-      - show running-directory
-      - show vlan
+    - gmoisio.ale.ale_aos_command: 
+        host: "{{ ansible_host }}"
+        username: admin
+        password: switch
+        sshconfig: ~/.ssh/config
+        commands:
+        - show running-directory
+        - show vlan
 
-- gmoisio.ale.ale_aos_command: 
-    host: "{{ ansible_host }}"
-    username: admin
-    password: switch
-    commands:
-      - command: show running-directory
-        search: "Running Configuration    : SYNCHRONIZED"
-      - command: show vlan
+    - gmoisio.ale.ale_aos_command: 
+        host: "{{ ansible_host }}"
+        username: admin
+        password: switch
+        commands:
+        - command: show running-directory
+            search: "Running Configuration    : SYNCHRONIZED"
+        - command: show vlan
 
 
 Authors

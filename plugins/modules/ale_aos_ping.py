@@ -39,7 +39,7 @@ author: Gilbert MOISIO
 version_added: "1.2.1" # of ale collection
 short_description: Check SSH connectivity for an ALE OmniSwitch device.
 description:
-    - Try to connect to an OmniSwitch device. The module check to see is the
+    - Try to connect to an OmniSwitch device. The module checks to see is the
       check_string is present in the output returned by find_prompt().
 requirements:
     - netmiko >= 3.4.0

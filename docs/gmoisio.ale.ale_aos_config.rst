@@ -9,7 +9,7 @@ gmoisio.ale.ale_aos_config
 
 Synopsis
 --------
-- This module send config commands from a file or a commands list to an ALE OmniSwitch device.
+- This module sends config commands from a file or a commands list to an ALE OmniSwitch device.
 
 Parameters
 ----------

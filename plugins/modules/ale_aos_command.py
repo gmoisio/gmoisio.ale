@@ -40,8 +40,8 @@ author: Gilbert MOISIO
 version_added: "1.2.1" # of ale collection
 short_description: Send a command to an ALE OmniSwitch device.
 description:
-    - Connect to an OmniSwitch device and send a command. It can search for a
-      string.
+    - Connect to an OmniSwitch device and send a list of commands.
+    It can search for a string.
 requirements:
     - netmiko >= 3.4.0
 options:

@@ -9,7 +9,7 @@ gmoisio.ale.ale_aos_facts
 
 Synopsis
 --------
-- This module get ALE OmniSwitch device informations and return a dictionary of lists.
+- This module gets ALE OmniSwitch device informations and return a dictionary of lists.
 
 Parameters
 ----------
