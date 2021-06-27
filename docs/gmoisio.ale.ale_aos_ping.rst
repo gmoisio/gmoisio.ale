@@ -26,7 +26,7 @@ Parameters
         type: int
         required: false
         default: 22
-    sshconf:
+    sshconfig:
         description:
             - Path to sshconfig to use for connections
         type: str
