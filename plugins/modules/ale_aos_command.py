@@ -37,7 +37,7 @@ DOCUMENTATION = '''
 ---
 module: ale_aos_command
 author: Gilbert MOISIO
-version_added: "1.2.1" # of ale collection
+version_added: "1.2.2" # of ale collection
 short_description: Send a command to an ALE OmniSwitch device.
 description:
     - Connect to an OmniSwitch device and send a list of commands.
@@ -153,6 +153,7 @@ def main():
                 else one_command
             output[command] = send_command_used(command)
             if 'search' in one_command and one_command['search'] not in output[command]:
+                ssh_conn.disconnect()
                 module.fail_json(msg="Search string (%s) not in command output" %
                                  (one_command['search']), output=output)
         ssh_conn.disconnect()

@@ -19,7 +19,7 @@ Modules
 
 Release notes
 -------------
-**v1.2.1** - [gmoisio.ale.ale_aos_command](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_command.rst) needs a list as input
+**v1.2.2** - [gmoisio.ale.ale_aos_command](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_command.rst) needs a list as input
 
 ~~~~yaml
 ---

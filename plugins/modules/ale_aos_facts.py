@@ -37,7 +37,7 @@ DOCUMENTATION = '''
 ---
 module: ale_aos_facts
 author: Gilbert MOISIO
-version_added: "1.2.1" # of ale collection
+version_added: "1.2.2" # of ale collection
 short_description: Get ALE OmniSwitch device informations and return a dictionary of lists.
 description:
     - Get device informations using getters selector and return a

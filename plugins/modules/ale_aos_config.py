@@ -39,7 +39,7 @@ DOCUMENTATION = '''
 ---
 module: ale_aos_config
 author: Gilbert MOISIO
-version_added: "1.2.1" # of ale collection
+version_added: "1.2.2" # of ale collection
 short_description: Send config commands to an ALE OmniSwitch device.
 description:
     - Connect to an OmniSwitch device and send configurations commands.
