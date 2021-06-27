@@ -25,7 +25,6 @@
 #                              anything the license permits.
 #
 
-from posixpath import commonpath
 from netmiko.ssh_exception import *
 from netmiko import ConnectHandler
 from ansible.module_utils.basic import AnsibleModule
