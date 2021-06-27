@@ -18,28 +18,34 @@ Parameters
     host:
         description:
             - Set to {{ inventory_hostname }} or {{ ansible_host }}
+        type: str
         required: true
     port:
         description:
             - SSH connection port
+        type: int
         required: false
         default: 22
     sshconf:
         description:
             - Path to sshconfig to use for connections
+        type: str
         required: false
         default: None
     username:
         description:
             - Login username
+        type: str
         required: true
     password:
         description:
             - Login password
+        type: str
         required: true
     getters:
         description:
             - List of the getters to retrieve
+        type: list
         required: false
         default: [vlans]
 

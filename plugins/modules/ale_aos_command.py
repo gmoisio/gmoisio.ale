@@ -25,6 +25,7 @@
 #                              anything the license permits.
 #
 
+from posixpath import commonpath
 from netmiko.ssh_exception import *
 from netmiko import ConnectHandler
 from ansible.module_utils.basic import AnsibleModule
@@ -36,7 +37,7 @@ DOCUMENTATION = '''
 ---
 module: ale_aos_command
 author: Gilbert MOISIO
-version_added: "1.2.0" # of ale collection
+version_added: "1.2.1" # of ale collection
 short_description: Send a command to an ALE OmniSwitch device.
 description:
     - Connect to an OmniSwitch device and send a command. It can search for a
@@ -47,38 +48,41 @@ options:
     host:
         description:
             - Set to {{ inventory_hostname }} or {{ ansible_host }}
+        type: str
         required: true
     port:
         description:
             - SSH connection port
+        type: int
         required: false
         default: 22
-    sshconf:
+    sshconfig:
         description:
             - Path to sshconfig to use for connections
+        type: str
         required: false
         default: None
     username:
         description:
             - Login username
+        type: str
         required: true
     password:
         description:
             - Login password
+        type: str
         required: true
-    command:
+    commands:
         description:
-            - Command to send to the device
+            - List of commands to send to the device. A search string can be specified
+            using a I(command) and I(search) dictionary. Program stops as soon as a search
+            string is not found.
+        type: list
         required: true
-    search:
-        description:
-            - String to search in the output of the command
-              to validate the proper execution
-        required: false
-        default: ''
     timing:
         description:
             - Boolean to run send_command_timing instead of send_command
+        type: bool
         required: false
         default: false
 '''
@@ -88,20 +92,30 @@ EXAMPLES = '''
     host: "{{ ansible_host }}"
     username: admin
     password: switch
-    sshconf: ~/.ssh/config
-    command: show running-directory
-    search: "Running Configuration    : SYNCHRONIZED"
+    sshconfig: ~/.ssh/config
+    commands:
+      - show running-directory
+      - show vlan
+
+- gmoisio.ale.ale_aos_command: 
+    host: "{{ ansible_host }}"
+    username: admin
+    password: switch
+    commands:
+      - command: show running-directory
+        search: "Running Configuration    : SYNCHRONIZED"
+      - command: show vlan
 '''
 
 RETURN = '''
 msg:
     description: Error message
     returned: On fail
-    type: string
+    type: str
 output:
-    description: Output returned by the command
+    description: Output returned by the commands
     returned: On exit and on fail if the search string is not found
-    type: string
+    type: dict
 '''
 
 
@@ -114,8 +128,7 @@ def main():
             sshconfig=dict(type=str, required=False, default=None),
             username=dict(type=str, required=True),
             password=dict(type=str, required=True, no_log=True),
-            command=dict(type=str, required=True),
-            search=dict(type=str, required=False, default=None),
+            commands=dict(type=list, required=True),
             timing=dict(type=bool, required=False, default=False),
         ),
         supports_check_mode=False)
@@ -129,18 +142,22 @@ def main():
         'password': module.params['password'],
     }
 
+    output = {}
+
     try:
         ssh_conn = ConnectHandler(**net_device)
-        if module.params['timing']:
-            output = ssh_conn.send_command_timing(module.params['command'])
-        else:
-            output = ssh_conn.send_command(module.params['command'])
+        send_command_used = ssh_conn.send_command_timing if module.params['timing'] \
+            else ssh_conn.send_command
+        for one_command in module.params['commands']:
+            command = one_command['command'] if 'command' in one_command \
+                else one_command
+            output[command] = send_command_used(command)
+            if 'search' in one_command and one_command['search'] not in output[command]:
+                module.fail_json(msg="Search string (%s) not in command output" %
+                                 (one_command['search']), output=output)
         ssh_conn.disconnect()
         if 'ERROR' in output:
             module.fail_json(msg="Error in command execution", output=output)
-        if module.params['search'] and module.params['search'] not in output:
-            module.fail_json(msg="Search string (%s) not in command output" %
-                                 (module.params['search']), output=output)
         module.exit_json(output=output)
     except (NetMikoAuthenticationException):
         module.fail_json(msg="Failed to authenticate to device (%s)" %

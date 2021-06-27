@@ -13,9 +13,35 @@ Modules
 | Name                                                                                                                 | Description                                                                            |
 | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | [gmoisio.ale.ale_aos_ping](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_ping.rst)       | Check SSH connectivity for an ALE OmniSwitch device                                    |
-| [gmoisio.ale.ale_aos_command](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_command.rst) | Send a command to an ALE OmniSwitch device                                             |
+| [gmoisio.ale.ale_aos_command](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_command.rst) | Send a list of commands to an ALE OmniSwitch device                                    |
 | [gmoisio.ale.ale_aos_config](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_config.rst)   | Send config commands to an ALE OmniSwitch device                                       |
 | [gmoisio.ale.ale_aos_facts](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_facts.rst)     | Get ALE OmniSwitch device informations and return a dictionary of lists (experimental) |
+
+Release notes
+-------------
+**v1.2.1** - [gmoisio.ale.ale_aos_ping](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_ping.rst) needs a list as input
+
+~~~~yaml
+---
+- gmoisio.ale.ale_aos_command: 
+    host: "{{ ansible_host }}"
+    username: admin
+    password: switch
+    sshconfig: ~/.ssh/config
+    commands:
+      - show running-directory
+      - show vlan
+
+- gmoisio.ale.ale_aos_command: 
+    host: "{{ ansible_host }}"
+    username: admin
+    password: switch
+    commands:
+      - command: show running-directory
+        search: "Running Configuration    : SYNCHRONIZED"
+      - command: show vlan
+~~~~
+
 
 Requirements
 ------------
