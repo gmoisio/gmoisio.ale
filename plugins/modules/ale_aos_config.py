@@ -58,7 +58,7 @@ options:
         type: int
         required: false
         default: 22
-    sshconf:
+    sshconfig:
         description:
             - Path to sshconfig to use for connections
         type: str
@@ -105,7 +105,7 @@ EXAMPLES = '''
     host: "{{ ansible_host }}"
     username: admin
     password: switch
-    sshconf: ~/.ssh/config
+    sshconfig: ~/.ssh/config
     commands:
       - vlan 100 enable name test1
       - vlan 200 enable name test2
