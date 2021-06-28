@@ -76,7 +76,7 @@ Examples
         password: switch
         commands:
         - command: show running-directory
-            search: "Running Configuration    : SYNCHRONIZED"
+          search: "Running Configuration    : SYNCHRONIZED"
         - command: show vlan
 
 
