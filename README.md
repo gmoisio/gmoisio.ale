@@ -32,6 +32,12 @@ Release notes
 pip install cerberus
 ~~~~
 
+~~~~jinja
+{% for vlan in vlans | gmoisio.ale.validate(vlans_schema) %}
+vlan {{ vlan.id }} admin-state enable name {{ vlan.name }}
+{% endfor %}
+~~~~
+
 **v1.2.2** - [gmoisio.ale.ale_aos_command](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_command.rst) needs a list as input
 
 ~~~~yaml
