@@ -62,21 +62,21 @@ Schema to validate vars
 .. code-block:: yaml
 
     vlans_schema:
-    required: True
-    type: list
-    schema:
-      type: dict
+      required: True
+      type: list
       schema:
-        name:
-          required: True
-          type: string
-          regex: '^[a-z0-9]+$'
-          maxlength: 10
-        id:
-          required: True
-          type: number
-          min: 1
-          max: 3000
+        type: dict
+        schema:
+          name:
+            required: True
+            type: string
+            regex: '^[a-z0-9]+$'
+            maxlength: 10
+          id:
+            required: True
+            type: number
+            min: 1
+            max: 3000
 
 .. code-block:: jinja
 
