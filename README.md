@@ -17,8 +17,20 @@ Modules
 | [gmoisio.ale.ale_aos_config](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_config.rst)   | Send config commands to an ALE OmniSwitch device                                       |
 | [gmoisio.ale.ale_aos_facts](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_facts.rst)     | Get ALE OmniSwitch device informations and return a dictionary of lists (experimental) |
 
+Filters
+-------
+
+| Name                                                                                               | Description                   |
+| -------------------------------------------------------------------------------------------------- | ----------------------------- |
+| [gmoisio.ale.validate](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.validate) | Validate vars against schemas |
+
 Release notes
 -------------
+**v1.3.0** - [gmoisio.ale.validate](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.validate.rst) requires Cerberus which is a lightweight and extensible data validation library for Python
+~~~~shell
+pip install cerberus
+~~~~
+
 **v1.2.2** - [gmoisio.ale.ale_aos_command](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_command.rst) needs a list as input
 
 ~~~~yaml
