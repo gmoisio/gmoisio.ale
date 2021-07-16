@@ -26,7 +26,8 @@ Filters
 
 Release notes
 -------------
-**v1.3.0** - [gmoisio.ale.validate](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.validate.rst) requires Cerberus which is a lightweight and extensible data validation library for Python
+**v1.3.0** - [gmoisio.ale.validate](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.validate.rst) requires Cerberus to validate vars against YAML schemas
+
 ~~~~shell
 pip install cerberus
 ~~~~
