@@ -8,7 +8,7 @@ from cerberus import Validator
 def validate(vars, data_schema):
     if not vars:
         raise AnsibleFilterError(
-            'Ansible vars list is empty, nothing to validate!')
+            'Vars list is empty, nothing to validate!')
     if not data_schema:
         raise AnsibleFilterError(
             'The schema dictionary is empty, cannot validate!')
