@@ -26,7 +26,7 @@ Filters
 
 Release notes
 -------------
-**v1.3.0** - [gmoisio.ale.validate](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.validate.rst) requires Cerberus to validate vars against YAML schemas
+**v1.3.0** - [gmoisio.ale.validate](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.validate.rst) filter requires Cerberus to validate vars against YAML schemas
 
 ~~~~shell
 pip install cerberus
