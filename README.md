@@ -20,9 +20,9 @@ Modules
 Filters
 -------
 
-| Name                                                                                               | Description                   |
-| -------------------------------------------------------------------------------------------------- | ----------------------------- |
-| [gmoisio.ale.validate](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.validate) | Validate vars against schemas |
+| Name                                                                                                   | Description                   |
+| ------------------------------------------------------------------------------------------------------ | ----------------------------- |
+| [gmoisio.ale.validate](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.validate.rst) | Validate vars against schemas |
 
 Release notes
 -------------
@@ -58,7 +58,7 @@ pip install cerberus
 Requirements
 ------------
 
-Requires ansible-base >= 2.10.10 and netmiko >= 3.4.0
+Requires ansible-base >= 2.10.10, netmiko >= 3.4.0 and cerberus >= 1.3.4
 
 Example Playbook
 ----------------
