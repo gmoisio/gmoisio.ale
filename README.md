@@ -24,8 +24,8 @@ An Ansible collection to access Alcatel-Lucent Enterprise OmniSwitch devices.
 ## Release notes
 
 ### v1.3.0
----
-Released on July 17, 2021
+
+> Released on July 17, 2021
 
 [gmoisio.ale.validate](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.validate.rst) filter requires Cerberus to validate vars against YAML schemas
 
@@ -40,8 +40,8 @@ vlan {{ vlan.id }} admin-state enable name {{ vlan.name }}
 ~~~~
 
 ### v1.2.2
----
-Released on June 26, 2021
+
+> Released on June 26, 2021
 
 [gmoisio.ale.ale_aos_command](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_command.rst) needs a list as input
 
