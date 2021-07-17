@@ -23,7 +23,8 @@ An Ansible collection to access Alcatel-Lucent Enterprise OmniSwitch devices.
 
 ## Release notes
 
-### v1.3.0
+<details>
+  <summary>v1.3.0</summary>
 
 > Released on July 17, 2021
 
@@ -38,8 +39,10 @@ pip install cerberus
 vlan {{ vlan.id }} admin-state enable name {{ vlan.name }}
 {% endfor %}
 ~~~~
+</details>
 
-### v1.2.2
+<details>
+  <summary>v1.2.2</summary>
 
 > Released on June 26, 2021
 
@@ -65,7 +68,7 @@ vlan {{ vlan.id }} admin-state enable name {{ vlan.name }}
         search: "Running Configuration    : SYNCHRONIZED"
       - command: show vlan
 ~~~~
-
+</details>
 
 ## Requirements
 
