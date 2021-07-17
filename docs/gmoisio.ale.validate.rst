@@ -84,7 +84,7 @@ Jinja2 template
     {% for vlan in vlans | gmoisio.ale.validate(vlans_schema) %}
     vlan {{ vlan.id }} admin-state enable name {{ vlan.name }}
     {% endfor %}
----
+
 Vars to be validated
 
 .. code-block:: yaml
