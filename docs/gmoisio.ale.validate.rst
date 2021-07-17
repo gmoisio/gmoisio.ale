@@ -10,6 +10,7 @@ gmoisio.ale.validate
 Synopsis
 --------
 - This filter allows to validate vars against YAML schemas.
+- Jinja2 template stops with an error when the vars do not conform to the schema.
 
 Validation Rules
 ----------------
