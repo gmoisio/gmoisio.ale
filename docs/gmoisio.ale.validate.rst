@@ -77,12 +77,14 @@ Schema to validate vars
             min: 1
             max: 3000
 
+Jinja2 template
+
 .. code-block:: jinja
 
     {% for vlan in vlans | gmoisio.ale.validate(vlans_schema) %}
     vlan {{ vlan.id }} admin-state enable name {{ vlan.name }}
     {% endfor %}
-
+---
 Vars to be validated
 
 .. code-block:: yaml
@@ -120,6 +122,8 @@ Schema to validate vars
       type: list
       schema:
         regex: '^[0-3]\.fr\.pool\.ntp\.org$'
+
+Ansible task
 
 .. code-block:: yaml
 
