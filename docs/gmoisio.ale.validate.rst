@@ -12,6 +12,35 @@ Synopsis
 - This filter allows to validate vars against YAML schemas.
 - Jinja2 template stops with error(s) when the vars do not conform to the schema.
 
+Parameters
+----------
+.. code-block:: yaml
+
+    arguments:
+        vars:
+            description:
+                - Vars to validate that are transmit through the pipe
+            type: list
+            required: true
+        data_schema:
+            description:
+                - Schema to use for vars validation
+            type: list
+            required: true
+        check:
+            description:
+                - Boolean that is used to return the vars used for validation or boolean
+            type: bool
+            required: false
+            default: False
+
+    Returns
+
+    - vars if they validate against schema and check value is False
+    - error message if vars do not validate against schema and check value is False
+    - boolean True if vars validate against schema and check value is True
+    - boolean False if vars do not validate against schema and check value is True
+
 Validation Rules
 ----------------
 Use Cerberus validation rules (see https://docs.python-cerberus.org/en/stable/validation-rules.html)
