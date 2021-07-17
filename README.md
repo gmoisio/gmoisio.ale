@@ -39,6 +39,14 @@ pip install cerberus
 vlan {{ vlan.id }} admin-state enable name {{ vlan.name }}
 {% endfor %}
 ~~~~
+
+~~~~yaml
+- name: Validate Source of Truth
+  ansible.builtin.assert:
+    that :
+      - hostvars[inventory_hostname]['vlans'] | gmoisio.ale.validate(vlans_schema, True)
+      - hostvars[inventory_hostname]['ntp_servers'] | gmoisio.ale.validate(ntp_servers_schema, True)
+~~~~
 </details>
 
 <details>
