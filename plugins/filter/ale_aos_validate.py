@@ -32,7 +32,7 @@ from ansible.errors import AnsibleFilterError
 from cerberus import Validator
 
 '''
-filter: validate
+filter: ale_aos_validate
 author: Gilbert MOISIO
 version_added: "1.3.0" # of ale collection
 short_description: Validate vars against schema.
