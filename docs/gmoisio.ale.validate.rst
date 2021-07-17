@@ -73,7 +73,7 @@ Schema to validate vars
             regex: '^[a-z0-9]+$'
             maxlength: 10
           id:
-            type: number
+            type: integer
             min: 1
             max: 3000
 
