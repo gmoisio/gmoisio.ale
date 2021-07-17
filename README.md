@@ -2,13 +2,11 @@
 
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-gmoisio.ale-blue.svg)](https://galaxy.ansible.com/gmoisio/gmoisio.ale)
 
-ALE
-===
+# ALE
 
 An Ansible collection to access Alcatel-Lucent Enterprise OmniSwitch devices.
 
-Modules
--------
+## Modules
 
 | Name                                                                                                                 | Description                                                                            |
 | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
@@ -17,16 +15,19 @@ Modules
 | [gmoisio.ale.ale_aos_config](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_config.rst)   | Send config commands to an ALE OmniSwitch device                                       |
 | [gmoisio.ale.ale_aos_facts](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_facts.rst)     | Get ALE OmniSwitch device informations and return a dictionary of lists (experimental) |
 
-Filters
--------
+## Filters
 
 | Name                                                                                                   | Description                   |
 | ------------------------------------------------------------------------------------------------------ | ----------------------------- |
 | [gmoisio.ale.validate](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.validate.rst) | Validate vars against schemas |
 
-Release notes
--------------
-**v1.3.0** - [gmoisio.ale.validate](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.validate.rst) filter requires Cerberus to validate vars against YAML schemas
+## Release notes
+
+### v1.3.0
+---
+Released on July 17, 2021
+
+[gmoisio.ale.validate](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.validate.rst) filter requires Cerberus to validate vars against YAML schemas
 
 ~~~~shell
 pip install cerberus
@@ -38,7 +39,11 @@ vlan {{ vlan.id }} admin-state enable name {{ vlan.name }}
 {% endfor %}
 ~~~~
 
-**v1.2.2** - [gmoisio.ale.ale_aos_command](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_command.rst) needs a list as input
+### v1.2.2
+---
+Released on June 26, 2021
+
+[gmoisio.ale.ale_aos_command](https://github.com/gmoisio/gmoisio.ale/blob/main/docs/gmoisio.ale.ale_aos_command.rst) needs a list as input
 
 ~~~~yaml
 ---
@@ -62,13 +67,11 @@ vlan {{ vlan.id }} admin-state enable name {{ vlan.name }}
 ~~~~
 
 
-Requirements
-------------
+## Requirements
 
 Requires ansible-base >= 2.10.10, netmiko >= 3.4.0 and cerberus >= 1.3.4
 
-Example Playbook
-----------------
+## Example Playbook
 
 ~~~~yaml
 ---
@@ -86,8 +89,7 @@ Example Playbook
     - ansible.builtin.debug: var=result
 ~~~~
 
-Dealing with password
----------------------
+## Dealing with password
 
 Password can be defined as a single encrypted variable in a YAML file.
 
@@ -101,8 +103,7 @@ To decrypt it at run time, there are two options:
 - Use the `--ask-vault-pass` option on the command line.
 - Use a file with the vault decryption password and configure the `vault_password_file` in `ansible.cfg`.
 
-Dealing with old AOS6 release
------------------------------
+## Dealing with old AOS6 release
 
 When there is an issue with SSH connection (SSH crypto algorithm issue), the workaround is to use the `sshconf` module option.
 
@@ -117,18 +118,15 @@ Host xx.yy.zz.ww
     HostKeyAlgorithms +ssh-dss
 ~~~~
 
-Improved display
-----------------
+## Improved display
 
 YAML format can improve playbooks display with `stdout_callback = yaml` in `ansible.cfg` file.
 It needs the `community.general` Ansible collection to work fine.
 
-License
--------
+## License
 
 Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0).
 
-Author Information
-------------------
+## Author Information
 
 Gilbert MOISIO, Network & Methodology Senior Consultant.
