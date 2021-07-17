@@ -23,7 +23,7 @@ An Ansible collection to access Alcatel-Lucent Enterprise OmniSwitch devices.
 
 ## Release notes
 
-<details>
+<details open>
   <summary>v1.3.0</summary>
 
 > Released on July 17, 2021
