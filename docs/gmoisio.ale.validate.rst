@@ -83,6 +83,52 @@ Schema to validate vars
     vlan {{ vlan.id }} admin-state enable name {{ vlan.name }}
     {% endfor %}
 
+Vars to be validated
+
+.. code-block:: yaml
+
+    vlans:
+      - name: test600
+        id: 600
+      - name: test4094
+        id: 2000
+    ntp_servers:
+      - 0.fr.pool.ntp.org
+      - 1.fr.pool.ntp.org
+      - 2.fr.pool.ntp.org
+      - 3.fr.pool.ntp.org
+
+Schema to validate vars
+
+.. code-block:: yaml
+
+    vlans_schema:
+      type: list
+      schema:
+        type: dict
+        require_all: True
+        schema:
+          name:
+            type: string
+            regex: '^[a-z0-9]+$'
+            maxlength: 10
+          id:
+            type: integer
+            min: 1
+            max: 3000
+    ntp_servers_schema:
+      type: list
+      schema:
+        regex: '^[0-3]\.fr\.pool\.ntp\.org$'
+
+.. code-block:: yaml
+
+    - name: Validate Source of Truth
+      ansible.builtin.assert:
+        that :
+          - hostvars[inventory_hostname]['vlans'] | gmoisio.ale.validate(vlans_schema, True)
+          - hostvars[inventory_hostname]['ntp_servers'] | gmoisio.ale.validate(ntp_servers_schema, True)
+
 Authors
 ~~~~~~~
 
