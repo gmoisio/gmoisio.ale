@@ -34,12 +34,12 @@ Parameters
             required: false
             default: False
 
-    Returns
+    Returns:
 
-    - vars if they validate against schema and check value is False
-    - error message if vars do not validate against schema and check value is False
-    - boolean True if vars validate against schema and check value is True
-    - boolean False if vars do not validate against schema and check value is True
+      - vars if they validate against schema and check value is False
+      - error message if vars do not validate against schema and check value is False
+      - boolean True if vars validate against schema and check value is True
+      - boolean False if vars do not validate against schema and check value is True
 
 Validation Rules
 ----------------
