@@ -1,6 +1,6 @@
 # Ansible Collection - gmoisio.ale
 
-[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-gmoisio.ale-blue.svg)](https://galaxy.ansible.com/gmoisio/gmoisio.ale)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-gmoisio.ale-blue.svg)](https://galaxy.ansible.com/gmoisio/ale)
 
 # ALE
 
