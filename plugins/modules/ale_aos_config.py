@@ -28,7 +28,7 @@
 from difflib import Differ
 from pathlib import Path
 from datetime import datetime
-from netmiko.ssh_exception import *
+from netmiko.exceptions import *
 from netmiko import ConnectHandler
 from ansible.module_utils.basic import AnsibleModule
 ANSIBLE_METADATA = {'metadata_version': '1.2',
@@ -45,7 +45,7 @@ description:
     - Connect to an OmniSwitch device and send configurations commands.
       It can take commands from a file or a commands list.
 requirements:
-    - netmiko >= 3.4.0
+    - netmiko >= 4.0.0
 options:
     host:
         description:

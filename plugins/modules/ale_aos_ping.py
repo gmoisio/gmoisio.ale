@@ -25,7 +25,7 @@
 #                              anything the license permits.
 #
 
-from netmiko.ssh_exception import *
+from netmiko.exceptions import *
 from netmiko import ConnectHandler
 from ansible.module_utils.basic import AnsibleModule
 ANSIBLE_METADATA = {'metadata_version': '1.2',
@@ -42,7 +42,7 @@ description:
     - Try to connect to an OmniSwitch device. The module checks to see is the
       check_string is present in the output returned by find_prompt().
 requirements:
-    - netmiko >= 3.4.0
+    - netmiko >= 4.0.0
 options:
     host:
         description:

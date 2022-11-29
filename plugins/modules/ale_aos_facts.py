@@ -25,7 +25,7 @@
 #                              anything the license permits.
 #
 
-from netmiko.ssh_exception import *
+from netmiko.exceptions import *
 from netmiko import ConnectHandler
 from ansible.module_utils.basic import AnsibleModule
 from re import findall
@@ -43,7 +43,7 @@ description:
     - Get device informations using getters selector and return a
       dictionary formatted output.
 requirements:
-    - netmiko >= 3.4.0
+    - netmiko >= 4.0.0
 options:
     host:
         description:
